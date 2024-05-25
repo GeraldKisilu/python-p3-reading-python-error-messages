@@ -1,51 +1,53 @@
-#!/usr/bin/env python3
-
+import unittest
 import runpy
 
-class TestNameError:
+class TestNameError(unittest.TestCase):
     '''
-    a_name_error.py
+    Tests for NameError in a_name_error.py
     '''
 
     def test_name_error(self):
         '''
-        contains defined name "hello_world"
+        Run a_name_error.py and check for NameError
         '''
+        with self.assertRaises(NameError):
+            runpy.run_path('lib/a_name_error.py')
 
-        runpy.run_path('lib/a_name_error.py')
-
-class TestSyntaxError:
+class TestSyntaxError(unittest.TestCase):
     '''
-    a_syntax_error.py
+    Tests for SyntaxError in a_syntax_error.py
     '''
 
     def test_syntax_error(self):
         '''
-        multiplies two numbers
+        Run a_syntax_error.py and check for SyntaxError
         '''
-        
-        runpy.run_path('lib/a_syntax_error.py')
+        with self.assertRaises(SyntaxError):
+            runpy.run_path('lib/a_syntax_error.py')
 
-class TestTypeError:
+class TestTypeError(unittest.TestCase):
     '''
-    a_type_error.py
+    Tests for TypeError in a_type_error.py
     '''
 
     def test_type_error(self):
         '''
-        adds two numbers
+        Run a_type_error.py and check for TypeError
         '''
-        
-        runpy.run_path('lib/a_type_error.py')
+        with self.assertRaises(TypeError):
+            runpy.run_path('lib/a_type_error.py')
 
-class TestAssertionError:
+class TestAssertionError(unittest.TestCase):
     '''
-    an_assertion_error.py
+    Tests for AssertionError in an_assertion_error.py
     '''
 
     def test_assertion_error(self):
         '''
-        evaluates two equal values
+        Run an_assertion_error.py and check for AssertionError
         '''
-        
-        runpy.run_path('lib/an_assertion_error.py')
+        with self.assertRaises(AssertionError):
+            runpy.run_path('lib/an_assertion_error.py')
+
+if __name__ == '__main__':
+    unittest.main()
